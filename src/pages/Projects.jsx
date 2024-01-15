@@ -6,6 +6,7 @@ import { OrbitControls, Text } from '@react-three/drei';
 import * as THREE from 'three';
 import Desk from '../models/Desk';
 import GlowingRectangle from '../components/GlowingRectangle';
+import Construction from '../models/Construction';
 
 
 const CameraController = () => {
@@ -45,19 +46,22 @@ const Projects = () => {
   
     return (
       <section className="w-full h-screen relative">
-        <Canvas className="w-full h-screen bg-black">
+        <Canvas className="w-full h-screen bg-black" camera={{ position: [0, 0, 2.5] }}>
           <CameraController />
           <ambientLight intensity={1} />
           <directionalLight position={[1, 1, 1]} intensity={3}/>
           <pointLight position={[1, 2, 0]} intensity={10} />
           <Suspense fallback={<Loader />}>
-            <Text text="Projects" color="white" fontSize={1} position={[0, 2, 0]} />
+            <Text text="Projects" color="white" fontSize={0.6} position={[0, 1, 0]} />
             <Desk position={[0.17, -2.75, 0]} rotation={[0, -1.5707, 0]} scale={[0.01, 0.01, 0.01]} />
             <Text text="3D Model Credit: Pedro Belthori" color="white" fontSize={.1} position={[2.5, -0.9, 1]} fillOpacity={0.5}/>
             {positions.map((position, index) => (
               <Human key={index} position={position} />
             ))}
             <GlowingRectangle position={[0.01, 0.02, -0.56]} color="white" intensity={1} width={0.8} length={1.5} />
+
+            <Construction position={[-1.2, -1, -5]} rotation={[0, 0.5, 0]} scale={[0.1, 0.1, 0.1]} />
+
           </Suspense>
         </Canvas>
       </section>

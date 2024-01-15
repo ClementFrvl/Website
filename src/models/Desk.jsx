@@ -5,8 +5,7 @@ import { a } from "@react-spring/three";
 import deskScene from "../../assets/3d/desk.glb";
 
 const Desk = (props) => {
-    const islandRef = useRef();
-
+    const deskRef = useRef();
     const { gl, viewport } = useThree();
     const { nodes, materials } = useGLTF(deskScene);
 
