@@ -10,8 +10,8 @@ const NotFound = () => {
   
     useEffect(() => {
       const newPositions = [];
-      for (let i = 0; i < 200; i++) { // Change 10 to the number of humans you want
-        const pos = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+      for (let i = 0; i < 50; i++) { // Change 10 to the number of humans you want
+        const pos = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(50));
         newPositions.push(pos);
       }
       setPositions(newPositions);

@@ -16,7 +16,7 @@ const CameraController = () => {
   useEffect(() => {
     const handleScroll = (event) => {
       event.preventDefault();
-      const deltaY = event.deltaY * 0.01; // Modify this value to change scroll sensitivity
+      const deltaY = event.deltaY * -0.01; // Modify this value to change scroll sensitivity
       camera.position.z -= deltaY;
       scrollY.current -= deltaY;
       window.scrollTo(0, scrollY.current);
@@ -37,8 +37,10 @@ const Projects = () => {
   
     useEffect(() => {
       const headPositions = [];
-      for (let i = 0; i < 200; i++) { // Change 10 to the number of humans you want
-        const pos = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(100));
+      for (let i = 0; i < 50; i++) { // Change 10 to the number of humans you want
+        const pos = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread(50));
+        pos[2] -= 25;
+        console.log(pos);
         headPositions.push(pos);
       }
       setPositions(headPositions);
@@ -52,6 +54,9 @@ const Projects = () => {
           <directionalLight position={[1, 1, 1]} intensity={3}/>
           <pointLight position={[1, 2, 0]} intensity={10} />
           <Suspense fallback={<Loader />}>
+
+            {/* Desk and projects */}
+
             <Text text="Projects" color="white" fontSize={0.6} position={[0, 1, 0]} />
             <Desk position={[0.17, -2.75, 0]} rotation={[0, -1.5707, 0]} scale={[0.01, 0.01, 0.01]} />
             <Text text="3D Model Credit: Pedro Belthori" color="white" fontSize={.1} position={[2.5, -0.9, 1]} fillOpacity={0.5}/>
@@ -59,6 +64,8 @@ const Projects = () => {
               <Human key={index} position={position} />
             ))}
             <GlowingRectangle position={[0.01, 0.02, -0.56]} color="white" intensity={1} width={0.8} length={1.5} />
+
+            {/* Project 1 - Azda */}
 
             <Construction position={[-1.2, -1, -5]} rotation={[0, 0.5, 0]} scale={[0.1, 0.1, 0.1]} />
 
